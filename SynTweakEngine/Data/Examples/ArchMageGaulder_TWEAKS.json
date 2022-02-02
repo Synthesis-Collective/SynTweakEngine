@@ -1,0 +1,47 @@
+{
+    "SPEL": [],
+    "ENCH": [
+      {
+        "Target": "106FCC:Skyrim.esm",
+        "Change": [
+          {
+            "Position": 0,
+            "Mag": 100.0,
+            "Duration": 0
+          },
+          {
+            "Position": 1,
+            "Mag": 100.0,
+            "Duration": 0
+          },
+          {
+            "Position": 2,
+            "Mag": 100.0,
+            "Duration": 0
+          }
+        ],
+        "Add": [
+          {
+            "Add": "07A0F8:Skyrim.esm",
+            "Mag": 25.0,
+            "Area": 0,
+            "Duration": 0
+          },
+          {
+            "Add": "07A105:Skyrim.esm",
+            "Mag": 25.0,
+            "Area": 0,
+            "Duration": 0
+          },
+          {
+            "Add": "07A0FD:Skyrim.esm",
+            "Mag": 50.0,
+            "Area": 0,
+            "Duration": 0
+          }
+        ]
+      }
+    ],
+    "MGEF": [],
+    "FLST": []
+  }
