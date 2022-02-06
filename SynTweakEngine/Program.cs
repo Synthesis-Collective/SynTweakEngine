@@ -1,7 +1,7 @@
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Skyrim;
 using Mutagen.Bethesda.Synthesis;
-
+using Mutagen.Bethesda.Plugins;
 
 using System;
 using System.IO;
@@ -42,7 +42,7 @@ namespace SynTweakEngine
                 {
                     foreach (var itm in fdata.FLST)
                     {
-                        var Target = state.LinkCache.Resolve<IFormListGetter>(itm.Target.FormKey);
+                        var Target = itm.Target.Resolve<IFormListGetter>(state.LinkCache);
                         if (Target != null)
                         {
                             if (itm.Inject != null)
@@ -50,7 +50,7 @@ namespace SynTweakEngine
                                 var tgt = state.PatchMod.FormLists.GetOrAddAsOverride(Target);
                                 foreach (var Form in itm.Inject)
                                 {
-                                    tgt.ContainedFormLinks.Append(Form);
+                                    tgt.Items.Add(Form.Resolve<ISkyrimMajorRecordGetter>(state.LinkCache));
                                 }
                             }
                         }
@@ -60,13 +60,13 @@ namespace SynTweakEngine
                 {
                     foreach (var itm in fdata.MGEF)
                     {
-                        var Target = state.LinkCache.Resolve<IMagicEffectGetter>(itm.Target.FormKey);
+                        var Target = itm.Target.Resolve<IMagicEffectGetter>(state.LinkCache);
                         if (Target != null)
                         {
                             if (itm.HitShader != null)
                             {
                                 var tgt = state.PatchMod.MagicEffects.GetOrAddAsOverride(Target);
-                                tgt.HitShader = itm.HitShader.Value.AsLink<IEffectShaderGetter>();
+                                tgt.HitShader.SetTo(itm.HitShader.Resolve<IEffectShaderGetter>(state.LinkCache).FormKey);
                             }
                         }
                     }
@@ -76,7 +76,7 @@ namespace SynTweakEngine
                 {
                     foreach (var itm in fdata.SPEL)
                     {
-                        var Target = state.LinkCache.Resolve<ISpellGetter>(itm.Target.FormKey);
+                        var Target = itm.Target.Resolve<ISpellGetter>(state.LinkCache);
                         if (Target != null)
                         {
                             if (itm.Add != null || itm.Change != null)
@@ -105,7 +105,7 @@ namespace SynTweakEngine
                                     {
                                         tgt.Effects.Append(new Effect()
                                         {
-                                            BaseEffect = state.LinkCache.Resolve<IMagicEffectGetter>(add.Add.FormKey).AsNullableLink(),
+                                            BaseEffect = add.Add.Resolve<IMagicEffectGetter>(state.LinkCache).AsNullableLink(),
                                             Data = new()
                                             {
                                                 Area = add.Area > 0 ? add.Area : 0,
@@ -124,7 +124,7 @@ namespace SynTweakEngine
                 {
                     foreach (var itm in fdata.ENCH)
                     {
-                        var Target = state.LinkCache.Resolve<IObjectEffectGetter>(itm.Target.FormKey);
+                        var Target = itm.Target.Resolve<IObjectEffectGetter>(state.LinkCache);
                         if (Target != null)
                         {
                             if (itm.Add != null || itm.Change != null)
@@ -153,7 +153,7 @@ namespace SynTweakEngine
                                     {
                                         tgt.Effects.Add(new Effect()
                                         {
-                                            BaseEffect = state.LinkCache.Resolve<IMagicEffectGetter>(add.Add.FormKey).AsNullableLink(),
+                                            BaseEffect = add.Add.Resolve<IMagicEffectGetter>(state.LinkCache).AsNullableLink(),
                                             Data = new()
                                             {
                                                 Area = add.Area > 0 ? add.Area : 0,

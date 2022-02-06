@@ -28,7 +28,7 @@ namespace SynTweakEngine.Structs
     }
     public struct MGEFTweak {
         public FormLink<IMagicEffectGetter> Target;
-        public FormKey? HitShader;
+        public IFormLink<IEffectShader>? HitShader;
     }
     public struct FLSTTweak {
         public FormLink<IFormListGetter> Target;
