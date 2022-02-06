@@ -103,14 +103,14 @@ namespace SynTweakEngine
                                 {
                                     foreach (var add in itm.Add)
                                     {
-                                        tgt.Effects.Append(new Effect()
+                                        tgt.Effects.Add(new Effect()
                                         {
                                             BaseEffect = add.Add.Resolve<IMagicEffectGetter>(state.LinkCache).AsNullableLink(),
                                             Data = new()
                                             {
-                                                Area = add.Area > 0 ? add.Area : 0,
-                                                Magnitude = add.Mag > 0 ? add.Mag : 10,
-                                                Duration = add.Duration > 0 ? add.Duration : 1
+                                                Area = add.Area,
+                                                Magnitude = add.Mag,
+                                                Duration = add.Duration
                                             }
                                         });
                                     }
@@ -156,9 +156,9 @@ namespace SynTweakEngine
                                             BaseEffect = add.Add.Resolve<IMagicEffectGetter>(state.LinkCache).AsNullableLink(),
                                             Data = new()
                                             {
-                                                Area = add.Area > 0 ? add.Area : 0,
-                                                Magnitude = add.Mag > 0 ? add.Mag : 10,
-                                                Duration = add.Duration > 0 ? add.Duration : 1
+                                                Area = add.Area,
+                                                Magnitude = add.Mag,
+                                                Duration = add.Duration
                                             }
                                         });
                                     }
