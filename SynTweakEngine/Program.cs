@@ -1,13 +1,14 @@
-using Mutagen.Bethesda;
-using Mutagen.Bethesda.Skyrim;
-using Mutagen.Bethesda.Synthesis;
-
 using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Mutagen.Bethesda;
+using Mutagen.Bethesda.Skyrim;
+using Mutagen.Bethesda.Synthesis;
+
 using Noggog;
+
 using Newtonsoft.Json.Linq;
 
 using SynTweakEngine.Structs;
