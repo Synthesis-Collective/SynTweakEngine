@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Mutagen.Bethesda.Skyrim;
-using Mutagen.Bethesda.Skyrim.Plugins;
+
 using Mutagen.Bethesda.Plugins;
+using Mutagen.Bethesda.Skyrim;
 
 namespace SynTweakEngine.Structs
 {
