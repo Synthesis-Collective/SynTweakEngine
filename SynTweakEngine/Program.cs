@@ -12,6 +12,7 @@ using Noggog;
 using Newtonsoft.Json.Linq;
 
 using SynTweakEngine.Structs;
+
 namespace SynTweakEngine
 {
     class Program
