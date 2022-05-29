@@ -6,6 +6,7 @@ using Mutagen.Bethesda.Skyrim;
 namespace SynTweakEngine.Structs
 {
     public struct ChangeSPELMGEF {
+        public FormLinkNullable<IMagicEffectGetter> SetTo;
         public int Position;
         public float Mag;
         public int Duration;
@@ -17,6 +18,7 @@ namespace SynTweakEngine.Structs
         public int Duration;
     }
     public struct SPELTweak {
+        public bool ClearDescription;
         public FormLink<ISpellGetter> Target;
         public List<ChangeSPELMGEF>? Change;
         public List<AddSPELMGEF>? Add;

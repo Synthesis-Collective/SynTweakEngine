@@ -12,6 +12,8 @@ using Noggog;
 using Newtonsoft.Json.Linq;
 
 using SynTweakEngine.Structs;
+using DynamicData;
+using Mutagen.Bethesda.Strings;
 
 namespace SynTweakEngine
 {
@@ -83,11 +85,18 @@ namespace SynTweakEngine
                             if (itm.Add != null || itm.Change != null)
                             {
                                 var tgt = state.PatchMod.Spells.GetOrAddAsOverride(Target);
+                                if(itm.ClearDescription) {
+                                    tgt.Description.Set(Language.English, null);
+                                }
                                 //Change Existing Effects
                                 if (itm.Change != null)
                                 {
                                     foreach (var change in itm.Change)
                                     {
+                                        //Change Effect
+                                        if(!change.SetTo.IsNull) {
+                                            tgt.Effects[change.Position].BaseEffect.SetTo(change.SetTo);
+                                        }
                                         //Duration
                                         if (change.Duration > 0)
                                         {
