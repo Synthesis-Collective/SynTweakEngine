@@ -1,8 +1,8 @@
 {
   "Nickname": "SynTweakEngine",
   "Visibility": "Exclude",
-  "OneLineDescription": "MZCore Highly Advanced Tweaker Engine",
-  "LongDescription": "MZCore tweak engine - highly advanced",
+  "OneLineDescription": "MZCore - Advanced Tweaker Engine",
+  "LongDescription": "MZCore Tweaker Engine - Allows the manipulation of different magic effects using user data",
   "PreferredAutoVersioning": "Default",
   "RequiredMods": []
 }

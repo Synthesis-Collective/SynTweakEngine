@@ -85,7 +85,8 @@ namespace SynTweakEngine
                             if (itm.Add != null || itm.Change != null)
                             {
                                 var tgt = state.PatchMod.Spells.GetOrAddAsOverride(Target);
-                                if(itm.ClearDescription) {
+                                if (itm.ClearDescription)
+                                {
                                     tgt.Description.Set(Language.English, null);
                                 }
                                 //Change Existing Effects
@@ -94,8 +95,13 @@ namespace SynTweakEngine
                                     foreach (var change in itm.Change)
                                     {
                                         //Change Effect
-                                        if(!change.SetTo.IsNull) {
+                                        if (!change.SetTo.IsNull)
+                                        {
                                             tgt.Effects[change.Position].BaseEffect.SetTo(change.SetTo);
+                                        }
+                                        //Area
+                                        if(change.Area > 0) {
+                                            tgt.Effects[change.Position].Data!.Area = change.Area;
                                         }
                                         //Duration
                                         if (change.Duration > 0)
@@ -113,16 +119,19 @@ namespace SynTweakEngine
                                 {
                                     foreach (var add in itm.Add)
                                     {
-                                        tgt.Effects.Add(new Effect()
+                                        if (!add.SetTo.IsNull)
                                         {
-                                            BaseEffect = add.Add.Resolve<IMagicEffectGetter>(state.LinkCache).AsNullableLink(),
-                                            Data = new()
+                                            tgt.Effects.Add(new Effect()
                                             {
-                                                Area = add.Area,
-                                                Magnitude = add.Mag,
-                                                Duration = add.Duration
-                                            }
-                                        });
+                                                BaseEffect = add.SetTo.Resolve<IMagicEffectGetter>(state.LinkCache).AsNullableLink(),
+                                                Data = new()
+                                                {
+                                                    Area = add.Area,
+                                                    Magnitude = add.Mag,
+                                                    Duration = add.Duration
+                                                }
+                                            });
+                                        }
                                     }
                                 }
                             }
@@ -163,7 +172,7 @@ namespace SynTweakEngine
                                     {
                                         tgt.Effects.Add(new Effect()
                                         {
-                                            BaseEffect = add.Add.Resolve<IMagicEffectGetter>(state.LinkCache).AsNullableLink(),
+                                            BaseEffect = add.SetTo.Resolve<IMagicEffectGetter>(state.LinkCache).AsNullableLink(),
                                             Data = new()
                                             {
                                                 Area = add.Area,

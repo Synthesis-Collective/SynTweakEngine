@@ -8,25 +8,20 @@ namespace SynTweakEngine.Structs
     public struct ChangeSPELMGEF {
         public FormLinkNullable<IMagicEffectGetter> SetTo;
         public int Position;
-        public float Mag;
-        public int Duration;
-    }
-    public struct AddSPELMGEF {
-        public FormLink<IMagicEffectGetter> Add;
-        public float Mag;
         public int Area;
+        public float Mag;
         public int Duration;
     }
     public struct SPELTweak {
         public bool ClearDescription;
         public FormLink<ISpellGetter> Target;
         public List<ChangeSPELMGEF>? Change;
-        public List<AddSPELMGEF>? Add;
+        public List<ChangeSPELMGEF>? Add;
     }
     public struct ENCHTweak {
         public FormLink<IObjectEffectGetter> Target;
         public List<ChangeSPELMGEF>? Change;
-        public List<AddSPELMGEF>? Add;
+        public List<ChangeSPELMGEF>? Add;
     }
     public struct MGEFTweak {
         public FormLink<IMagicEffectGetter> Target;
