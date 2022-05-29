@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Skyrim;
+using Mutagen.Bethesda.Strings;
 using Mutagen.Bethesda.Synthesis;
 
 using Noggog;
@@ -12,8 +13,6 @@ using Noggog;
 using Newtonsoft.Json.Linq;
 
 using SynTweakEngine.Structs;
-using DynamicData;
-using Mutagen.Bethesda.Strings;
 
 namespace SynTweakEngine
 {
