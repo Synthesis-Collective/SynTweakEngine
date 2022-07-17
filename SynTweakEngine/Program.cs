@@ -123,7 +123,7 @@ namespace SynTweakEngine
                                         {
                                             tgt.Effects.Add(new Effect()
                                             {
-                                                BaseEffect = add.SetTo.Resolve<IMagicEffectGetter>(state.LinkCache).AsNullableLink(),
+                                                BaseEffect = add.SetTo.Resolve<IMagicEffectGetter>(state.LinkCache).ToNullableLink(),
                                                 Data = new()
                                                 {
                                                     Area = add.Area,
@@ -174,7 +174,7 @@ namespace SynTweakEngine
                                         {
                                             tgt.Effects.Add(new Effect()
                                             {
-                                                BaseEffect = add.SetTo.Resolve<IMagicEffectGetter>(state.LinkCache).AsNullableLink(),
+                                                BaseEffect = add.SetTo.Resolve<IMagicEffectGetter>(state.LinkCache).ToNullableLink(),
                                                 Data = new()
                                                 {
                                                     Area = add.Area,
